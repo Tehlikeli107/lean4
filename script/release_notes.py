@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+#     "gitpython>=3.1.46",
+# ]
+# ///
 
 import sys
 import re
 import json
-import requests
 import subprocess
 import argparse
 from collections import defaultdict
