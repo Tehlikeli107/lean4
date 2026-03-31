@@ -10,6 +10,7 @@ public import Std.Do.Triple.Basic
 public import Init.Data.Range.Polymorphic.Iterators
 import Init.Data.Range.Polymorphic
 public import Init.Data.Slice.Array
+public import Init.Repeat
 
 -- This public import is a workaround for #10652.
 -- Without it, adding the `spec` attribute for `instMonadLiftTOfMonadLift` will fail.
@@ -2188,3 +2189,27 @@ theorem Spec.forIn_stringSlice
       next => apply Triple.pure; simp
       next b => simp [ih _ _ hsp.next]
   | endPos => simpa using Triple.pure _ (by simp)
+
+/-!
+# Repeat loop specification infrastructure
+-/
+
+/--
+A variant (termination measure) for a `Repeat`/`while` loop.
+Maps the accumulator state to a natural number (possibly depending on monadic state) that
+decreases with each iteration.
+-/
+@[spec_invariant_type]
+abbrev WhileVariant (β : Type u) (ps : PostShape.{u}) := β → SVal ps.args (ULift Nat)
+
+/-- Evaluate a `WhileVariant` at a given accumulator and measure value. -/
+abbrev WhileVariant.eval {β ps} (variant : WhileVariant β ps) (b : β) (n : Nat) :=
+  SPred.evalsTo (variant b) ⟨n⟩
+
+/--
+An invariant for a `Repeat`/`while` loop. A postcondition over `Bool × β` where the `Bool`
+indicates whether the loop has finished (`true`) or is still iterating (`false`).
+-/
+@[spec_invariant_type]
+abbrev WhileInvariant β ps := PostCond (Bool × β) ps
+

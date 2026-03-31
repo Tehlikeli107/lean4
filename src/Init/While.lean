@@ -32,8 +32,11 @@ partial def Loop.forIn {β : Type u} {m : Type u → Type v} [Monad m] (_ : Loop
 instance [Monad m] : ForIn m Loop Unit where
   forIn := Loop.forIn
 
-syntax "repeat " doSeq : doElem
+syntax (name := doRepeat) "repeat " doSeq : doElem
 
+/-- Bootstrapping fallback macro for `repeat`.
+Expands to `for _ in Loop.mk do ...`. Overridden by the macro in `Init.Repeat` after
+bootstrapping. -/
 macro_rules
   | `(doElem| repeat $seq) => `(doElem| for _ in Loop.mk do $seq)
 

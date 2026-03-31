@@ -178,6 +178,41 @@ theorem entails_pure_elim_cons {σ : Type u} [Inhabited σ] (P Q : Prop) : entai
 @[simp] theorem entails_4 {P Q : SPred [σ₁, σ₂, σ₃, σ₄]} : SPred.entails P Q ↔ (∀ s₁ s₂ s₃ s₄, (P s₁ s₂ s₃ s₄).down → (Q s₁ s₂ s₃ s₄).down) := iff_of_eq rfl
 @[simp] theorem entails_5 {P Q : SPred [σ₁, σ₂, σ₃, σ₄, σ₅]} : SPred.entails P Q ↔ (∀ s₁ s₂ s₃ s₄ s₅, (P s₁ s₂ s₃ s₄ s₅).down → (Q s₁ s₂ s₃ s₄ s₅).down) := iff_of_eq rfl
 
+/-!
+# `SPred.evalsTo`
+
+Relates a stateful value `SVal σs α` to a pure value `a : α`, lifting equality through the state.
+-/
+
+/-- Relates a stateful value to a pure value, lifting equality through the state layers. -/
+def evalsTo {α : Type u} {σs : List (Type u)} (f : SVal σs α) (a : α) : SPred σs :=
+  match σs with
+  | [] => ⌜a = f⌝
+  | _ :: _ => fun s => evalsTo (f s) a
+
+/-- `evalsTo` on empty state is pure equality. -/
+@[simp, grind =] theorem evalsTo_nil {f : SVal [] α} {a : α} :
+    evalsTo f a = ⌜a = f⌝ := rfl
+
+/-- `evalsTo` on cons state peels off one state layer. -/
+theorem evalsTo_cons {f : σ → SVal σs α} {a : α} {s : σ} :
+    evalsTo (σs := σ::σs) f a s = evalsTo (f s) a := rfl
+
+/-- `evalsTo` on singleton state peels off the state layer. -/
+@[simp, grind =] theorem evalsTo_1 {f : SVal [σ] α} {a : α} {s : σ} :
+    evalsTo f a s = evalsTo (f s) a := rfl
+
+/-- `evalsTo` on two-element state peels off both state layers. -/
+@[simp, grind =] theorem evalsTo_2 {f : SVal [σ₁, σ₂] α} {a : α} {s₁ : σ₁} {s₂ : σ₂} :
+    evalsTo f a s₁ s₂ = evalsTo (f s₁ s₂) a := rfl
+
+/-- A stateful value always evaluates to some pure value. -/
+theorem evalsTo_total {P : SPred σs} (f : SVal σs α) :
+    P ⊢ₛ ∃ m, evalsTo f m := by
+  induction σs with
+  | nil => simp
+  | cons _ _ ih => intro s; apply ih
+
 /-! # Tactic support -/
 
 namespace Tactic
@@ -338,3 +373,4 @@ theorem Frame.frame {P Q T : SPred σs} {φ : Prop} [HasFrame P Q φ]
     · exact HasFrame.reassoc.mp.trans SPred.and_elim_r
     · intro hp
       exact HasFrame.reassoc.mp.trans (SPred.and_elim_l' (h hp))
+

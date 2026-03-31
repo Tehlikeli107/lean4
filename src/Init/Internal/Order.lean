@@ -8,4 +8,5 @@ module
 prelude
 public import Init.Internal.Order.Basic
 public import Init.Internal.Order.Lemmas
+public import Init.Internal.Order.MonoBindRight
 public import Init.Internal.Order.Tactic
