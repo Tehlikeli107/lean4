@@ -21,7 +21,7 @@ register_builtin_option backward.do.legacy : Bool := {
 
 register_builtin_option backward.do.while : Bool := {
   defValue := false
-  descr    := "Use the legacy partial `Loop` type for `repeat`/`while` loops instead of `Repeat`, which is based on `partial_fixpoint`. Useful as a workaround when the monad lacks a `MonoBindRight` instance."
+  descr    := "Use the legacy partial `Loop` type for `repeat`/`while` loops instead of `Repeat`, which is based on `partial_fixpoint`. Useful as a workaround when the monad lacks a `MonadTail` instance."
 }
 
 private def toDoElem (newKind : SyntaxNodeKind) : Macro := fun stx => do

@@ -17,13 +17,6 @@ namespace Lean.Elab.Do
 
 open Lean.Parser.Term
 
-/--
-Builtin do-element elaborator for `repeat` (syntax kind `Lean.doRepeat`).
-
-When `backward.do.while` is `true`, expands to `for _ in Loop.mk do ...` (legacy behavior).
-When `backward.do.while` is `false` (default), expands to `for _ in Repeat.mk do ...`
-(well-founded behavior).
--/
 @[builtin_doElem_elab Lean.doRepeat] def elabDoRepeat : DoElab := fun stx dec => do
   let `(doElem| repeat $seq) := stx | throwUnsupportedSyntax
   let expanded ←

@@ -256,6 +256,14 @@ instance [Inhabited α] : Inhabited (ContextAsync α) where
 instance : MonadAwait AsyncTask ContextAsync where
   await t := fun _ => await t
 
+instance : Lean.Order.MonadTail ContextAsync where
+  instCCPO α := inferInstanceAs (Lean.Order.CCPO (CancellationContext → Async α))
+  bind_mono_right h := by
+    intro ctx
+    apply Lean.Order.MonadTail.bind_mono_right (m := Async)
+    intro x
+    exact h x ctx
+
 end ContextAsync
 
 /--

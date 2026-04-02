@@ -8,6 +8,7 @@ module
 prelude
 public import Init.System.Promise
 public import Init.While
+public import Init.Internal.Order.MonadTail
 
 public section
 
@@ -487,7 +488,23 @@ instance : Monad BaseAsync where
   pure := BaseAsync.pure
   bind := BaseAsync.bind
 
-instance : MonadAttach BaseAsync := .trivial
+set_option linter.unusedVariables false in
+/-- `BaseAsync.bind` is monotone in the continuation argument with respect to the CCPO on
+`BaseAsync`. This is an axiom because the `MaybeTask.ofTask` case of `BaseAsync.bind` uses
+`BaseIO.bindTask`, which is `@[extern] opaque` and cannot be unfolded. The property holds
+because `bind` only calls the continuation on values produced by `a`. -/
+axiom bind_mono_right' {α β : Type} [inst : Nonempty (MaybeTask β)]
+    (a : BaseIO (MaybeTask α)) (f₁ f₂ : α → BaseIO (MaybeTask β))
+    (h : ∀ x, @Lean.Order.PartialOrder.rel (BaseIO (MaybeTask β)) (Lean.Order.CCPO.toPartialOrder) (f₁ x) (f₂ x)) :
+    @Lean.Order.PartialOrder.rel (BaseIO (MaybeTask β)) (Lean.Order.CCPO.toPartialOrder)
+      (BaseAsync.bind a f₁) (BaseAsync.bind a f₂)
+
+set_option linter.unusedVariables false in
+instance : Lean.Order.MonadTail BaseAsync where
+  instCCPO _ := inferInstanceAs (Lean.Order.CCPO (BaseIO _))
+  bind_mono_right {α β a f₁ f₂} _ h :=
+    haveI : Nonempty (MaybeTask β) := ⟨.pure Classical.ofNonempty⟩
+    bind_mono_right' (β := β) a f₁ f₂ h
 
 instance : MonadLift BaseIO BaseAsync where
   monadLift := BaseAsync.lift
@@ -709,7 +726,14 @@ instance : Monad (EAsync ε) where
   pure := EAsync.pure
   bind := EAsync.bind
 
-instance : MonadAttach (EAsync ε) := .trivial
+instance : Lean.Order.MonadTail (EAsync ε) where
+  instCCPO _ := inferInstanceAs (Lean.Order.CCPO (BaseAsync _))
+  bind_mono_right {α β a f₁ f₂} _ h := by
+    haveI : Nonempty (MaybeTask (Except ε β)) := ⟨.pure Classical.ofNonempty⟩
+    exact BaseAsync.bind_mono_right' a _ _ fun x =>
+      match x with
+      | Except.error _ => Lean.Order.PartialOrder.rel_refl
+      | Except.ok a => h a
 
 instance : MonadLift (EIO ε) (EAsync ε) where
   monadLift := EAsync.lift

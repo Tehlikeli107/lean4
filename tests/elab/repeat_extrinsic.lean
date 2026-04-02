@@ -10,7 +10,7 @@ open Std.Do
 # Tests for `Repeat`/`while` loops with `partial_fixpoint`
 
 These tests verify that the `Repeat` type and its verification infrastructure work correctly
-using the `partial_fixpoint`-based approach with `MonoBindRight`.
+using the `partial_fixpoint`-based approach with `MonadTail`.
 -/
 
 /-- `sqrt n` computes the integer square root of `n` using a `while` loop. -/
