@@ -2661,16 +2661,17 @@ _start:
 lean_object* v___x_504_; lean_object* v___x_505_; lean_object* v___x_506_; 
 v___x_504_ = lean_obj_once(&l_Lean_addMessageContextPartial___at___00Lean_throwError___at___00__private_Lean_Linter_UnusedVariables_0__Lean_Linter_initFn_00___x40_Lean_Linter_UnusedVariables_1088826556____hygCtx___hyg_2__spec__0_spec__0___closed__1, &l_Lean_addMessageContextPartial___at___00Lean_throwError___at___00__private_Lean_Linter_UnusedVariables_0__Lean_Linter_initFn_00___x40_Lean_Linter_UnusedVariables_1088826556____hygCtx___hyg_2__spec__0_spec__0___closed__1_once, _init_l_Lean_addMessageContextPartial___at___00Lean_throwError___at___00__private_Lean_Linter_UnusedVariables_0__Lean_Linter_initFn_00___x40_Lean_Linter_UnusedVariables_1088826556____hygCtx___hyg_2__spec__0_spec__0___closed__1);
 v___x_505_ = lean_unsigned_to_nat(0u);
-v___x_506_ = lean_alloc_ctor(0, 9, 0);
+v___x_506_ = lean_alloc_ctor(0, 10, 0);
 lean_ctor_set(v___x_506_, 0, v___x_505_);
 lean_ctor_set(v___x_506_, 1, v___x_505_);
 lean_ctor_set(v___x_506_, 2, v___x_505_);
-lean_ctor_set(v___x_506_, 3, v___x_504_);
+lean_ctor_set(v___x_506_, 3, v___x_505_);
 lean_ctor_set(v___x_506_, 4, v___x_504_);
 lean_ctor_set(v___x_506_, 5, v___x_504_);
 lean_ctor_set(v___x_506_, 6, v___x_504_);
 lean_ctor_set(v___x_506_, 7, v___x_504_);
 lean_ctor_set(v___x_506_, 8, v___x_504_);
+lean_ctor_set(v___x_506_, 9, v___x_504_);
 return v___x_506_;
 }
 }
@@ -10450,8 +10451,8 @@ else
 lean_object* v_a_3585_; lean_object* v___x_3587_; uint8_t v_isShared_3588_; uint8_t v_isSharedCheck_3592_; 
 lean_dec(v_val_3521_);
 lean_dec_ref(v_children_3520_);
-lean_dec_ref(v_x_3508_);
 lean_dec_ref(v_i_3519_);
+lean_dec_ref(v_x_3508_);
 lean_dec_ref(v_postNode_3507_);
 lean_dec_ref(v_preNode_3506_);
 v_a_3585_ = lean_ctor_get(v___x_3523_, 0);
@@ -12246,7 +12247,7 @@ goto v_resetjp_4006_;
 v_resetjp_4006_:
 {
 lean_object* v_eAssignment_4009_; lean_object* v___x_4010_; lean_object* v___x_4012_; 
-v_eAssignment_4009_ = lean_ctor_get(v_mctxAfter_4000_, 7);
+v_eAssignment_4009_ = lean_ctor_get(v_mctxAfter_4000_, 8);
 lean_inc_ref(v_eAssignment_4009_);
 lean_dec_ref(v_mctxAfter_4000_);
 v___x_4010_ = lean_array_push(v_assignments_4005_, v_eAssignment_4009_);
@@ -17383,10 +17384,10 @@ return v___y_5750_;
 LEAN_EXPORT lean_object* l_Lean_logAt___at___00Lean_logWarningAt___at___00Lean_Linter_logLint___at___00Lean_Linter_UnusedVariables_unusedVariables_spec__15_spec__22_spec__26___lam__0___boxed(lean_object* v___y_5757_, lean_object* v_suppressElabErrors_5758_, lean_object* v_x_5759_){
 _start:
 {
-uint8_t v___y_39685__boxed_5760_; uint8_t v_suppressElabErrors_boxed_5761_; uint8_t v_res_5762_; lean_object* v_r_5763_; 
-v___y_39685__boxed_5760_ = lean_unbox(v___y_5757_);
+uint8_t v___y_39686__boxed_5760_; uint8_t v_suppressElabErrors_boxed_5761_; uint8_t v_res_5762_; lean_object* v_r_5763_; 
+v___y_39686__boxed_5760_ = lean_unbox(v___y_5757_);
 v_suppressElabErrors_boxed_5761_ = lean_unbox(v_suppressElabErrors_5758_);
-v_res_5762_ = l_Lean_logAt___at___00Lean_logWarningAt___at___00Lean_Linter_logLint___at___00Lean_Linter_UnusedVariables_unusedVariables_spec__15_spec__22_spec__26___lam__0(v___y_39685__boxed_5760_, v_suppressElabErrors_boxed_5761_, v_x_5759_);
+v_res_5762_ = l_Lean_logAt___at___00Lean_logWarningAt___at___00Lean_Linter_logLint___at___00Lean_Linter_UnusedVariables_unusedVariables_spec__15_spec__22_spec__26___lam__0(v___y_39686__boxed_5760_, v_suppressElabErrors_boxed_5761_, v_x_5759_);
 lean_dec(v_x_5759_);
 v_r_5763_ = lean_box(v_res_5762_);
 return v_r_5763_;

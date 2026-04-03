@@ -8049,16 +8049,17 @@ _start:
 lean_object* v___x_2429_; lean_object* v___x_2430_; lean_object* v___x_2431_; 
 v___x_2429_ = lean_obj_once(&l_Lean_mkUnknownIdentifierMessageCore___at___00Lean_mkUnknownIdentifierMessage___at___00Lean_throwUnknownIdentifierAt___at___00Lean_throwUnknownConstantAt___at___00Lean_throwUnknownConstant___at___00Lean_getConstVal___at___00__private_Lean_Elab_Tactic_Simp_0__Lean_Elab_Tactic_elabDeclToUnfoldOrTheorem_spec__2_spec__2_spec__3_spec__4_spec__5_spec__6___redArg___closed__1, &l_Lean_mkUnknownIdentifierMessageCore___at___00Lean_mkUnknownIdentifierMessage___at___00Lean_throwUnknownIdentifierAt___at___00Lean_throwUnknownConstantAt___at___00Lean_throwUnknownConstant___at___00Lean_getConstVal___at___00__private_Lean_Elab_Tactic_Simp_0__Lean_Elab_Tactic_elabDeclToUnfoldOrTheorem_spec__2_spec__2_spec__3_spec__4_spec__5_spec__6___redArg___closed__1_once, _init_l_Lean_mkUnknownIdentifierMessageCore___at___00Lean_mkUnknownIdentifierMessage___at___00Lean_throwUnknownIdentifierAt___at___00Lean_throwUnknownConstantAt___at___00Lean_throwUnknownConstant___at___00Lean_getConstVal___at___00__private_Lean_Elab_Tactic_Simp_0__Lean_Elab_Tactic_elabDeclToUnfoldOrTheorem_spec__2_spec__2_spec__3_spec__4_spec__5_spec__6___redArg___closed__1);
 v___x_2430_ = lean_unsigned_to_nat(0u);
-v___x_2431_ = lean_alloc_ctor(0, 9, 0);
+v___x_2431_ = lean_alloc_ctor(0, 10, 0);
 lean_ctor_set(v___x_2431_, 0, v___x_2430_);
 lean_ctor_set(v___x_2431_, 1, v___x_2430_);
 lean_ctor_set(v___x_2431_, 2, v___x_2430_);
-lean_ctor_set(v___x_2431_, 3, v___x_2429_);
+lean_ctor_set(v___x_2431_, 3, v___x_2430_);
 lean_ctor_set(v___x_2431_, 4, v___x_2429_);
 lean_ctor_set(v___x_2431_, 5, v___x_2429_);
 lean_ctor_set(v___x_2431_, 6, v___x_2429_);
 lean_ctor_set(v___x_2431_, 7, v___x_2429_);
 lean_ctor_set(v___x_2431_, 8, v___x_2429_);
+lean_ctor_set(v___x_2431_, 9, v___x_2429_);
 return v___x_2431_;
 }
 }
@@ -11681,9 +11682,9 @@ return v___x_3692_;
 LEAN_EXPORT lean_object* l___private_Lean_Elab_Tactic_Simp_0__Lean_Elab_Tactic_elabSimpArg___lam__0___boxed(lean_object* v_arg_3695_, lean_object* v___x_3696_, lean_object* v_fvar_x3f_3697_, lean_object* v___y_3698_, lean_object* v___y_3699_, lean_object* v___y_3700_, lean_object* v___y_3701_, lean_object* v___y_3702_, lean_object* v___y_3703_, lean_object* v___y_3704_, lean_object* v___y_3705_, lean_object* v___y_3706_){
 _start:
 {
-uint8_t v___x_19554__boxed_3707_; lean_object* v_res_3708_; 
-v___x_19554__boxed_3707_ = lean_unbox(v___x_3696_);
-v_res_3708_ = l___private_Lean_Elab_Tactic_Simp_0__Lean_Elab_Tactic_elabSimpArg___lam__0(v_arg_3695_, v___x_19554__boxed_3707_, v_fvar_x3f_3697_, v___y_3698_, v___y_3699_, v___y_3700_, v___y_3701_, v___y_3702_, v___y_3703_, v___y_3704_, v___y_3705_);
+uint8_t v___x_19555__boxed_3707_; lean_object* v_res_3708_; 
+v___x_19555__boxed_3707_ = lean_unbox(v___x_3696_);
+v_res_3708_ = l___private_Lean_Elab_Tactic_Simp_0__Lean_Elab_Tactic_elabSimpArg___lam__0(v_arg_3695_, v___x_19555__boxed_3707_, v_fvar_x3f_3697_, v___y_3698_, v___y_3699_, v___y_3700_, v___y_3701_, v___y_3702_, v___y_3703_, v___y_3704_, v___y_3705_);
 lean_dec(v___y_3705_);
 lean_dec_ref(v___y_3704_);
 lean_dec(v___y_3703_);
@@ -11839,10 +11840,10 @@ return v___y_3715_;
 LEAN_EXPORT lean_object* l_Lean_logAt___at___00Lean_logErrorAt___at___00Lean_Elab_logException___at___00__private_Lean_Elab_Tactic_Simp_0__Lean_Elab_Tactic_elabSimpArg_spec__1_spec__2_spec__7___redArg___lam__0___boxed(lean_object* v___y_3743_, lean_object* v_suppressElabErrors_3744_, lean_object* v_x_3745_){
 _start:
 {
-uint8_t v___y_19812__boxed_3746_; uint8_t v_suppressElabErrors_boxed_3747_; uint8_t v_res_3748_; lean_object* v_r_3749_; 
-v___y_19812__boxed_3746_ = lean_unbox(v___y_3743_);
+uint8_t v___y_19813__boxed_3746_; uint8_t v_suppressElabErrors_boxed_3747_; uint8_t v_res_3748_; lean_object* v_r_3749_; 
+v___y_19813__boxed_3746_ = lean_unbox(v___y_3743_);
 v_suppressElabErrors_boxed_3747_ = lean_unbox(v_suppressElabErrors_3744_);
-v_res_3748_ = l_Lean_logAt___at___00Lean_logErrorAt___at___00Lean_Elab_logException___at___00__private_Lean_Elab_Tactic_Simp_0__Lean_Elab_Tactic_elabSimpArg_spec__1_spec__2_spec__7___redArg___lam__0(v___y_19812__boxed_3746_, v_suppressElabErrors_boxed_3747_, v_x_3745_);
+v_res_3748_ = l_Lean_logAt___at___00Lean_logErrorAt___at___00Lean_Elab_logException___at___00__private_Lean_Elab_Tactic_Simp_0__Lean_Elab_Tactic_elabSimpArg_spec__1_spec__2_spec__7___redArg___lam__0(v___y_19813__boxed_3746_, v_suppressElabErrors_boxed_3747_, v_x_3745_);
 lean_dec(v_x_3745_);
 v_r_3749_ = lean_box(v_res_3748_);
 return v_r_3749_;

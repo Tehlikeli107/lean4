@@ -9868,16 +9868,17 @@ _start:
 lean_object* v___x_3899_; lean_object* v___x_3900_; lean_object* v___x_3901_; 
 v___x_3899_ = lean_obj_once(&l_Lean_addMessageContextPartial___at___00Lean_throwError___at___00Lean_getConstInfoInduct___at___00__private_Lean_Elab_Deriving_DecEq_0__Lean_Elab_Deriving_DecEq_mkDecEq_spec__0_spec__0_spec__1___redArg___closed__1, &l_Lean_addMessageContextPartial___at___00Lean_throwError___at___00Lean_getConstInfoInduct___at___00__private_Lean_Elab_Deriving_DecEq_0__Lean_Elab_Deriving_DecEq_mkDecEq_spec__0_spec__0_spec__1___redArg___closed__1_once, _init_l_Lean_addMessageContextPartial___at___00Lean_throwError___at___00Lean_getConstInfoInduct___at___00__private_Lean_Elab_Deriving_DecEq_0__Lean_Elab_Deriving_DecEq_mkDecEq_spec__0_spec__0_spec__1___redArg___closed__1);
 v___x_3900_ = lean_unsigned_to_nat(0u);
-v___x_3901_ = lean_alloc_ctor(0, 9, 0);
+v___x_3901_ = lean_alloc_ctor(0, 10, 0);
 lean_ctor_set(v___x_3901_, 0, v___x_3900_);
 lean_ctor_set(v___x_3901_, 1, v___x_3900_);
 lean_ctor_set(v___x_3901_, 2, v___x_3900_);
-lean_ctor_set(v___x_3901_, 3, v___x_3899_);
+lean_ctor_set(v___x_3901_, 3, v___x_3900_);
 lean_ctor_set(v___x_3901_, 4, v___x_3899_);
 lean_ctor_set(v___x_3901_, 5, v___x_3899_);
 lean_ctor_set(v___x_3901_, 6, v___x_3899_);
 lean_ctor_set(v___x_3901_, 7, v___x_3899_);
 lean_ctor_set(v___x_3901_, 8, v___x_3899_);
+lean_ctor_set(v___x_3901_, 9, v___x_3899_);
 return v___x_3901_;
 }
 }
@@ -13504,9 +13505,9 @@ return v___x_5413_;
 LEAN_EXPORT lean_object* l_List_allM___at___00Lean_isEnumType___at___00__private_Lean_Elab_Deriving_DecEq_0__Lean_Elab_Deriving_DecEq_mkDecEqInstance_spec__0_spec__1___boxed(lean_object* v___x_5416_, lean_object* v_x_5417_, lean_object* v___y_5418_, lean_object* v___y_5419_, lean_object* v___y_5420_){
 _start:
 {
-uint8_t v___x_2621__boxed_5421_; lean_object* v_res_5422_; 
-v___x_2621__boxed_5421_ = lean_unbox(v___x_5416_);
-v_res_5422_ = l_List_allM___at___00Lean_isEnumType___at___00__private_Lean_Elab_Deriving_DecEq_0__Lean_Elab_Deriving_DecEq_mkDecEqInstance_spec__0_spec__1(v___x_2621__boxed_5421_, v_x_5417_, v___y_5418_, v___y_5419_);
+uint8_t v___x_2622__boxed_5421_; lean_object* v_res_5422_; 
+v___x_2622__boxed_5421_ = lean_unbox(v___x_5416_);
+v_res_5422_ = l_List_allM___at___00Lean_isEnumType___at___00__private_Lean_Elab_Deriving_DecEq_0__Lean_Elab_Deriving_DecEq_mkDecEqInstance_spec__0_spec__1(v___x_2622__boxed_5421_, v_x_5417_, v___y_5418_, v___y_5419_);
 lean_dec(v___y_5419_);
 lean_dec_ref(v___y_5418_);
 return v_res_5422_;

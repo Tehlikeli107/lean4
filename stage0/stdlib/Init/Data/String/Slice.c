@@ -6884,9 +6884,9 @@ goto v_resetjp_2474_;
 }
 v_resetjp_2474_:
 {
-lean_object* v_skipPrefix_x3f_2477_; lean_object* v___x_2478_; lean_object* v___x_2480_; 
-v_skipPrefix_x3f_2477_ = lean_ctor_get(v_inst_2470_, 0);
-lean_inc_ref(v_skipPrefix_x3f_2477_);
+lean_object* v_skipSuffix_x3f_2477_; lean_object* v___x_2478_; lean_object* v___x_2480_; 
+v_skipSuffix_x3f_2477_ = lean_ctor_get(v_inst_2470_, 0);
+lean_inc_ref(v_skipSuffix_x3f_2477_);
 lean_dec_ref(v_inst_2470_);
 v___x_2478_ = lean_nat_add(v_startInclusive_2472_, v_pos_2469_);
 lean_dec(v_startInclusive_2472_);
@@ -6909,7 +6909,7 @@ goto v_reusejp_2479_;
 v_reusejp_2479_:
 {
 lean_object* v___x_2481_; 
-v___x_2481_ = lean_apply_1(v_skipPrefix_x3f_2477_, v___x_2480_);
+v___x_2481_ = lean_apply_1(v_skipSuffix_x3f_2477_, v___x_2480_);
 if (lean_obj_tag(v___x_2481_) == 0)
 {
 return v___x_2481_;
@@ -6997,9 +6997,9 @@ goto v_resetjp_2505_;
 }
 v_resetjp_2505_:
 {
-lean_object* v_skipPrefix_x3f_2508_; lean_object* v___x_2509_; lean_object* v___x_2511_; 
-v_skipPrefix_x3f_2508_ = lean_ctor_get(v_inst_2501_, 0);
-lean_inc_ref(v_skipPrefix_x3f_2508_);
+lean_object* v_skipSuffix_x3f_2508_; lean_object* v___x_2509_; lean_object* v___x_2511_; 
+v_skipSuffix_x3f_2508_ = lean_ctor_get(v_inst_2501_, 0);
+lean_inc_ref(v_skipSuffix_x3f_2508_);
 lean_dec_ref(v_inst_2501_);
 v___x_2509_ = lean_nat_add(v_startInclusive_2503_, v_pos_2499_);
 lean_dec(v_startInclusive_2503_);
@@ -7022,7 +7022,7 @@ goto v_reusejp_2510_;
 v_reusejp_2510_:
 {
 lean_object* v___x_2512_; 
-v___x_2512_ = lean_apply_1(v_skipPrefix_x3f_2508_, v___x_2511_);
+v___x_2512_ = lean_apply_1(v_skipSuffix_x3f_2508_, v___x_2511_);
 if (lean_obj_tag(v___x_2512_) == 0)
 {
 return v___x_2512_;
