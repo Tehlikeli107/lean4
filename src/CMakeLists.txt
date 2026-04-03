@@ -358,34 +358,15 @@ if(NOT LEAN_STANDALONE)
 endif()
 
 # OpenSSL
-if("${CMAKE_SYSTEM_NAME}" MATCHES "Emscripten")
-  # Only on WebAssembly we compile OpenSSL ourselves
-  set(OPENSSL_EMSCRIPTEN_FLAGS "${EMSCRIPTEN_SETTINGS}")
-
-  # OpenSSL needs to be configured for Emscripten using their configuration system
-  ExternalProject_add(openssl
-    PREFIX openssl
-    GIT_REPOSITORY https://github.com/openssl/openssl
-    # Sync version with flake.nix if applicable
-    GIT_TAG openssl-3.0.15
-    CONFIGURE_COMMAND <SOURCE_DIR>/Configure linux-generic32 no-shared no-dso no-engine no-tests --prefix=<INSTALL_DIR> CC=${CMAKE_C_COMPILER} CXX=${CMAKE_CXX_COMPILER} AR=${CMAKE_AR} CFLAGS=${OPENSSL_EMSCRIPTEN_FLAGS}
-    BUILD_COMMAND emmake make -j
-    INSTALL_COMMAND emmake make install_sw
-    BUILD_IN_SOURCE ON)
-  set(OPENSSL_INCLUDE_DIR "${CMAKE_BINARY_DIR}/openssl/include")
-  set(OPENSSL_CRYPTO_LIBRARY "${CMAKE_BINARY_DIR}/openssl/lib/libcrypto.a")
-  set(OPENSSL_SSL_LIBRARY "${CMAKE_BINARY_DIR}/openssl/lib/libssl.a")
-  set(OPENSSL_LIBRARIES "${OPENSSL_SSL_LIBRARY} ${OPENSSL_CRYPTO_LIBRARY}")
-else()
+if(NOT "${CMAKE_SYSTEM_NAME}" MATCHES "Emscripten")
   find_package(OpenSSL 3 REQUIRED)
   set(OPENSSL_LIBRARIES ${OPENSSL_SSL_LIBRARY} ${OPENSSL_CRYPTO_LIBRARY})
-endif()
-include_directories(${OPENSSL_INCLUDE_DIR})
-string(JOIN " " OPENSSL_LIBRARIES_STR ${OPENSSL_LIBRARIES})
-string(APPEND LEANSHARED_LINKER_FLAGS " ${OPENSSL_LIBRARIES_STR}")
-
-if(NOT LEAN_STANDALONE)
-  string(APPEND LEAN_EXTRA_LINKER_FLAGS " ${OPENSSL_LIBRARIES_STR}")
+  include_directories(${OPENSSL_INCLUDE_DIR})
+  string(JOIN " " OPENSSL_LIBRARIES_STR ${OPENSSL_LIBRARIES})
+  string(APPEND LEANSHARED_LINKER_FLAGS " ${OPENSSL_LIBRARIES_STR}")
+  if(NOT LEAN_STANDALONE)
+    string(APPEND LEAN_EXTRA_LINKER_FLAGS " ${OPENSSL_LIBRARIES_STR}")
+  endif()
 endif()
 
 if(CMAKE_SYSTEM_NAME MATCHES "Linux")
@@ -806,8 +787,8 @@ if(STAGE GREATER 1)
 else()
   add_subdirectory(runtime)
   if("${CMAKE_SYSTEM_NAME}" MATCHES "Emscripten")
-    add_dependencies(leanrt libuv openssl)
-    add_dependencies(leanrt_initial-exec libuv openssl)
+    add_dependencies(leanrt libuv)
+    add_dependencies(leanrt_initial-exec libuv)
   endif()
 
   add_subdirectory(util)
