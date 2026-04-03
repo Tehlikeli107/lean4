@@ -165,6 +165,20 @@ class DownstreamChecker(RepoChecker):
 
         util.run("scripts/update.sh", cwd=lrepo.path)
 
+    def _bump_toolchain_bibtex_query(self, lrepo: LocalRepo) -> None:
+        lub = self.github.get_repo(repos.LEAN4_UNICODE_BASIC.full_name)
+        tag = util.get_lean_unicode_basic_release_for(lub, self.version)
+        if not tag:
+            raise SystemExit(1)
+
+        util.edit(
+            lrepo.path / "lakefile.toml",
+            r'(name = "UnicodeBasic"[\s\S]*?rev =) ".+?"',
+            rf'\1 "{tag}"',
+        )
+
+        self._bump_toolchain_deps(lrepo.path)
+
     def _bump_toolchain_in_worktree(self, rrepo: ReleaseRepo, lrepo: LocalRepo) -> None:
         self._bump_toolchain(lrepo.path)
 
@@ -179,6 +193,8 @@ class DownstreamChecker(RepoChecker):
             self._bump_toolchain_reference_manual(lrepo)
         elif rrepo.full_name == repos.LEAN_FRO_ORG.full_name:
             self._bump_toolchain_lean_fro_org(lrepo)
+        elif rrepo.full_name == repos.BIBTEX_QUERY.full_name:
+            self._bump_toolchain_bibtex_query(lrepo)
         elif rrepo.dependencies:
             self._bump_toolchain_deps(lrepo.path)
 

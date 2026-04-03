@@ -482,3 +482,20 @@ def get_next_proofwidgets_release(grepo: Repository) -> str:
             patch = int(match.group(1))
             return f"v0.0.{patch + 1}"
     raise SystemExit("No releases found in tags")
+
+
+##################################
+## lean4-unicode-basic releases ##
+##################################
+
+
+def get_lean_unicode_basic_release_for(
+    grepo: Repository, version: Version
+) -> Tag | None:
+    expected_toolchain = get_toolchain_for(version)
+    for tag in grepo.get_tags().get_page(0):
+        if not re.fullmatch(r"v\d+\.\d+\.\d+", tag.name):
+            continue
+        toolchain = get_file_contents(grepo, tag.commit.sha, "lean-toolchain")
+        if toolchain.strip() == expected_toolchain:
+            return tag
